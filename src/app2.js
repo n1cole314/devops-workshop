@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 const AWS = require("aws-sdk");
 
@@ -13,7 +13,7 @@ app.get("/s3", async (req, res) => {
       Key: process.env.S3_FILE || "santa.txt",
     })
     .promise();
-  console.log(response);
+
   const data = response.Body.toString("utf-8");
   res.send(data);
 });
