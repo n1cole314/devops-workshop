@@ -8,17 +8,10 @@ const { resolve } = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const logger = require("pino")();
+const logger = pino(pino.destination("./logs/app.log"));
 
 const SECOND_SERVICE_URL =
   process.env.SECOND_SERVICE_URL || "http://localhost:3001";
-
-const transport = pino.transport({
-  target: "pino/file",
-  options: { destination: "./logs/app.log" },
-});
-
-pino(transport);
 
 app.get("/hello", (req, res) => {
   logger.info("hello world");
