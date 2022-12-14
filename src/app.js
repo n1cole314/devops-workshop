@@ -22,7 +22,7 @@ app.get("/inner", async (req, res) => {
   try {
     const url = SECOND_SERVICE_URL + "/s3";
     logger.info(`getting data from ${url}`);
-    const response = await axios.get();
+    const response = await axios.get(url);
     res.send(response.data);
   } catch (e) {
     logger.error(e);
